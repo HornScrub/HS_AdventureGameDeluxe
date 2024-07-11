@@ -42,7 +42,7 @@ def main():
 
         game.update()
         game.render()
-        pygame.display.flip()
+        
 
         # Limit the frame rate to 60 FPS
         clock.tick(fps)
@@ -52,4 +52,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
 
