@@ -18,10 +18,17 @@ def main():
     
     pygame.init()
 
-    settings = {
+
+    ''' settings = {
         'screen_width' : pygame.display.Info().current_w,
         'screen_height': pygame.display.Info().current_h,
         'fullscreen' : True
+    } '''
+
+    settings = {
+        'screen_width' : 800,
+        'screen_height': 600,
+        'fullscreen' : False
     }
 
     display = Display(settings)

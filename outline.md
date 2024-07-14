@@ -39,3 +39,5 @@ AdventureGameDeluxe/
 7/12 - Worked on creating static objects in the game, some obstacles that stop the player from moving around. Also had to figure out some frustrating issues with
 getting the movement how I want it to work and what happens when you collide with the edge of the screen and objects.
 
+7/14 - Added a UI bezel, updated collisions. Trying to figure out how interpreters work and pathing with python modules.
+

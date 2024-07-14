@@ -4,15 +4,19 @@ class Player:
     def __init__(self, screen_width, screen_height):
         self.rect = pygame.Rect(100, 100, 50, 50)  # Define the rectangle
         self.color = (0, 128, 255)  # Define the color
-        self.speed = 5  # Define the movement speed
+        self.speed = 3  # Define the movement speed
         self.velocity = pygame.Vector2(0, 0)  # Initialize velocity
         self.screen_width = screen_width
         self.screen_height = screen_height
+
+        ## UI elements
+        self.health = 100
 
     def handle_event(self, event):
         keys = pygame.key.get_pressed()
         self.update_velocity(keys)
 
+    # Handles movement events
     def update_velocity(self, keys):
         # Reset velocities
         self.velocity.x = 0

@@ -1,6 +1,7 @@
 import pygame
 from player import Player
 from level import Level
+from ui import UI
 
 class Game:
     def __init__(self, display):
@@ -10,6 +11,8 @@ class Game:
         self.screen_height = display.screen_height
         self.player = Player(self.screen_width, self.screen_height)
         self.level = Level(self.screen_width, self.screen_height)
+        self.ui = UI(self.screen_width, self.screen_height)
+        
 
     def handle_event(self, event):
         self.player.handle_event(event)
@@ -23,6 +26,9 @@ class Game:
 
         # Draw the level
         self.level.render(self.screen)
+
+        #Draw the UI
+        self.ui.render(self.screen, self.player)
 
         # Draw the player
         self.player.render(self.screen)
