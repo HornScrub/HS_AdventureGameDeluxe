@@ -41,3 +41,4 @@ getting the movement how I want it to work and what happens when you collide wit
 
 7/14 - Added a UI bezel, updated collisions. Trying to figure out how interpreters work and pathing with python modules.
 
+7/24 - Been a while. Updated collisions so now you can smush up against objects and the display. Made the beginnings of a vision cone.

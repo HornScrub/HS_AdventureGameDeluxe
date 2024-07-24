@@ -6,6 +6,7 @@ from game import Game
 
 def main():
 
+    # Initialize pygame modules
     ''' pygame is made up of several submodules that handle different
             aspects of game development, such as:
             Display module: Manages the creation and updating of game window

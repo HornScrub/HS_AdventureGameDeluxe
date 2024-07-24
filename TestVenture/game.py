@@ -25,6 +25,7 @@ class Game:
         self.level = Level(settings['screen_width'], settings['screen_height'])
         self.player = Player(self.level)
         self.ui = UI()
+        self.vision = Vision()
         ## self.camera = Camera()
     
     def handle_event(self, event):
@@ -43,9 +44,12 @@ class Game:
 
     def render(self, screen, display):
         self.screen.fill((0, 0, 0)) # Clear screen with black color
-        self.ui.render(self.screen)
+
+        self.vision.render(self.screen, self.player.rect.center, pygame.mouse.get_pos())
+        
         self.level.render(self.screen)
         self.player.render(self.screen)
+        self.ui.render(self.screen)
     
         pygame.display.flip() # Update the full display surface to the screen
 

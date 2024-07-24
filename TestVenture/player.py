@@ -36,27 +36,36 @@ class Player:
                 self.velocity.y = self.speed
 
     def update(self, level):
-        # Create new Rects representing potential new positions
-        new_rect_x = self.rect.move(self.velocity.x, 0)  # Move horizontally
-        new_rect_y = self.rect.move(0, self.velocity.y)  # Move vertically
 
         # Backup velocities before collision detection
         backup_velocity_x = self.velocity.x
         backup_velocity_y = self.velocity.y
 
-        # Check for horizontal collisions
-        if not level.check_collision(new_rect_x):
-            self.rect.x += self.velocity.x
-            x_change = self.speed
-        else:
-            self.velocity.x = 0  # Stop horizontal movement
+        # Create new rect representing potential new horizontal position
+        while self.velocity.x != 0:
+            new_rect_x = self.rect.move(self.velocity.x, 0)  # Move horizontally
+            # Check for horizontal collisions
+            if not level.check_collision(new_rect_x):
+                self.rect.x += self.velocity.x
+                break
+            else: # Decrease absolute velocity as we approach an object so we collide up against it 
+                if self.velocity.x > 0:
+                    self.velocity.x -= 1
+                else:
+                    self.velocity.x += 1
 
-        # Check for vertical collisions
-        if not level.check_collision(new_rect_y):
-            self.rect.y += self.velocity.y
-            y_change = self.speed
-        else:
-            self.velocity.y = 0  # Stop vertical movement
+        # Create new rect representing potential new vertical position
+        while self.velocity.y != 0:
+            new_rect_y = self.rect.move(0, self.velocity.y)  # Move vertically
+            # Check for vertical collisions
+            if not level.check_collision(new_rect_y):
+                self.rect.y += self.velocity.y
+                break
+            else: # Decrease absolute velocity as we approach an object so we collide up against it
+                if self.velocity.y > 0:
+                    self.velocity.y -= 1
+                else:
+                    self.velocity.y += 1
 
         # Boundary checking as before
         if self.rect.left < 0:
@@ -69,8 +78,8 @@ class Player:
             self.rect.bottom = self.level_height
 
         # Restore velocities if no collision
-        if self.velocity.x == 0:
-            self.velocity.x = backup_velocity_x
+        
+        self.velocity.x = backup_velocity_x
         if self.velocity.y == 0:
             self.velocity.y = backup_velocity_y
 
